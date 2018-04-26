@@ -1,0 +1,9 @@
+syntax on
+set autoindent
+set cindent
+set smarttab
+set expandtab
+set tabstop=4 shiftwidth=4
+
+set fileencodings=ucs-bom,utf-8,latin2,latin1,default
+set background=dark
