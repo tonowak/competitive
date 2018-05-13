@@ -46,7 +46,7 @@ struct Debug {
     _operator(cerr << x, _eif(is_func<T>() == false && is_ptr<T>() == false && is_integral<_rref(T)>() == true)) { 
         using L = long long;
         if(abs(int(x)) == inf || abs(L(x)) == inf_l)
-            cerr << (int(x) == inf ? "+∞" : int(x) == -inf ? "-∞" : L(x) == inf_l ? "+∞" : L(x) == -inf_l ? "-∞" : "?");
+            cerr << ((int(x) == inf || L(x) == inf_l) ? "+∞" : (int(x) == -inf || L(x) == -inf_l) ? "-∞" : "?");
         else
             cerr << x;
         return *this; 
@@ -226,7 +226,7 @@ int main() {
     D << "Można też użyć po prostu D; do zrobienia newlina.";
     D << "inf wynosi 1061109567 (trochę większe od 1e9). Można spokojnie pomnożyć inf przez 2 i dodać jeszcze 25264512 (>2e7) i nie przekroczy inta.";
     D << "Podobnie inf_l wynosi lekko ponad 4.5e18, a limit long longa = 2^63-1, czyli lekko ponad 9.2e18.";
-    D << "Dodatkowo, jak Debug spotka przy wypisywaniu jakiegoś inf, to wypisze zamiast tego odpowiednio znak + albo -:";
+    D << "Dodatkowo, jak Debug spotka przy wypisywaniu jakiegoś inf, to wypisze zamiast tego odpowiednio znaki +∞ lub -∞ (nie sprawdzone czy działa na Windowsie):";
     D << I(inf) << I(-inf) << I(inf_l) << I(-inf_l);
 
     cout << licznik << nl;
