@@ -1,7 +1,7 @@
 function compile() {
 	clang++ $1.cpp -o $1 ${@:2} -fcolor-diagnostics 1>.log 2>&1
 	if [ -s .log ]; then
-		less .log
+		less -rR .log
 	fi
 	rm .log
 }
