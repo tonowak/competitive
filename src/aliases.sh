@@ -2,10 +2,11 @@
 
 function compile() {
 	rm .failed -f
-	if ! clang++ $1.cpp -o $1 ${@:2} -fcolor-diagnostics 1>.log 2>&1; then
+	file=${${1}%.cpp}
+	if ! clang++ $file.cpp -o $file ${@:2} -fcolor-diagnostics 1>.log 2>&1; then
 		print -P "%F{red}%BError: %F{gray}Compilation failed"
 		touch .failed
-		rm $1 -f
+		rm $file -f
 	fi
 
 	if [ -s .log ]; then
@@ -22,11 +23,11 @@ function dc() {
 }
 
 function nc() {
-	compile $1 -std=c++11 -O2
+	compile $1 -std=c++11 -O3
 }
 
 function dc_gdb() {
-	compile $1 -std=c++11 -O2 -g3 -ggdb
+	compile $1 -std=c++11 -O3 -g3 -ggdb -fno-omit-frame-pointer
 }
 
 function run_program() {
@@ -38,8 +39,7 @@ function run_program() {
 function ntask() {
 	local path=~/src/$1
 	/bin/mkdir $path 2>/dev/null
-	# cp ~/git/algorithms/templates/rich/* $path/
-	/bin/cp ~/src/templates/* $path/
+	/bin/cp ~/src/template/* $path/
 	cd $path
 }
 
@@ -56,6 +56,7 @@ alias nb='nc b; run_program b'
 alias ng='nc g'
 
 alias v='nvim'
+alias vi='v'
 alias vm='v m.cpp'
 alias vb='v b.cpp'
 alias vg='v g.cpp'
