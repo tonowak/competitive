@@ -28,7 +28,7 @@ Rozkład plików w folderach stworzonych komendą task:
 * tests/gen.gen - wygenerowany test przez skrypt gen.sh
 * tests/main.gen - wygenerowane wyjście wzorcówki na teście tests/gen.gen
 * tests/brute.gen - wygenerowane wyjście bruta na teście tests/gen.gen
-* tests/*.in oraz tests/*.out - testy dla skryptu.sh. Gdy istnieje plik X.in, to musi też istnieć plik X.out. Domyślnie nie ma takich plików w folderze. Można stworzyć dowolną ilość takich plików
+* tests/\*.in oraz tests/\*.out - testy dla skryptu.sh. Gdy istnieje plik X.in, to musi też istnieć plik X.out. Domyślnie nie ma takich plików w folderze. Można stworzyć dowolną ilość takich plików
 
 ### Kompilacja
 
