@@ -4,7 +4,7 @@ Moje rzeczy związane z competitive programming: nagłówki, techniki, skrypty
 
 ## Instalacja skryptów do kodzenia (src)
 
-Wymagane jest clang++ oraz zsh (być może też oh-my-zsh, wszystko jest na szkolnych kompach). Tworzy folder ~/src. Jednolinijkowiec:
+Wymagane jest clang++ oraz zsh (być może też oh-my-zsh, wszystko jest na szkolnych kompach). Tworzy folder ~/src (zrób kopię zapasową tego folderu przed instalacją). Jednolinijkowiec:
 
 ```
 wget -O - https://raw.githubusercontent.com/tonowak/competitive/master/install.sh | zsh && source ~/src/aliases.sh
@@ -50,7 +50,9 @@ Będąc w folderze zadania, istnieje wiele komend skrótowych:
 * ng - kompiluje z flagami OI'a plik gen.cpp
 * s - odpala skrypt spr.sh (sprawdzarka wzorcówki na testach tests/*.in)
 * g - odpala skrypt gen.sh (generatorka testów do uwalenia wzorcówki)
+
 Aliasy do edytowania/wyświetlania plików (raczej mało ważne gdy się używa Sublime-Text):
+
 * v - alias na edytor tekstu (domyślnie vim, można zmienić na subl by odpalało w Sublime-Text)
 * vm - edytuje plik main.cpp
 * vb - edytuje plik gen.cpp
