@@ -10,7 +10,7 @@ function compile() {
 	fi
 
 	if [ -s .log ]; then
-		less .log
+		less -R .log
 		rm .log
 	fi
 }
@@ -23,7 +23,7 @@ function dc() {
 }
 
 function nc() {
-	compile $1 -std=c++11 -O3
+	compile $1 -std=c++11 -O3 -static # -m32
 }
 
 function dc_gdb() {
@@ -32,47 +32,46 @@ function dc_gdb() {
 
 function run_program() {
 	if [ ! -f .failed ]; then
-		./$1 < tg
+		./$1 < tests/gen.gen
 	fi
 }
 
-function ntask() {
-	local path=~/src/$1
-	/bin/mkdir $path 2>/dev/null
-	/bin/cp ~/src/template/* $path/
+function task() {
+	local path="$HOME/src/$1"
+	if [ ! -d $path ]; then
+		echo "Creating path $path"
+		/bin/mkdir -p $path
+		/bin/cp -r ~/src/template/* $path/
+	fi
 	cd $path
 }
 
-function task() {
-	cd ~/src/$1
-}
+alias dm='dc main; run_program main'
+alias db='dc brute; run_program brute'
+alias dg='dc gen'
 
-alias dm='dc m; run_program m'
-alias db='dc b; run_program b'
-alias dg='dc g'
+alias nm='nc main; run_program main'
+alias nb='nc brute; run_program brute'
+alias ng='nc gen'
 
-alias nm='nc m; run_program m'
-alias nb='nc b; run_program b'
-alias ng='nc g'
-
-alias v='nvim'
+alias v='nvim' # or nvim or subl (sublime text)
 alias vi='v'
-alias vm='v m.cpp'
-alias vb='v b.cpp'
-alias vg='v g.cpp'
-alias vtm='v tm'
-alias vtb='v tb'
-alias vtg='v tg'
-alias vta='v ta'
+alias vg='v gen.cpp'
+alias vm='v main.cpp'
+alias vb='v brute.cpp'
+alias vtc='v tests/config.gen'
+alias vtb='v tests/brute.gen'
+alias vtm='v tests/main.gen'
+alias vtg='v tests/gen.gen'
 
-alias cm='cat m.cpp'
-alias cb='cat b.cpp'
-alias cg='cat g.cpp'
-alias ctm='cat tm'
-alias ctb='cat tb'
-alias ctg='cat tg'
-alias cta='cat ta'
+alias cg='cat gen.cpp'
+alias cm='cat main.cpp'
+alias cb='cat brute.cpp'
+alias ctc='cat tests/config.gen'
+alias ctb='cat tests/brute.gen'
+alias ctm='cat tests/main.gen'
+alias ctg='cat tests/gen.gen'
 
-alias s='./s.sh'
-alias g='./g.sh'
+alias s='./spr.sh'
+alias g='./gen.sh'
 
