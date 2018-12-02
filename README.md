@@ -79,8 +79,8 @@ Oraz poprzednie komendy:
 
 * task
 * compile
-* dc (i dodatkowy dc\_gdb)
-* nc
+* dc (debug compile)
+* nc (normal compile)
 * add\_test
 
 ## Nagłówki i inne OI-owe kody
