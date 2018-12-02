@@ -37,13 +37,13 @@ function run_program() {
 }
 
 function task() {
-	local path="$HOME/src/$1"
-	if [ ! -d $path ]; then
-		echo "Creating path $path"
-		/bin/mkdir -p $path
-		/bin/cp -r ~/src/template/* $path/
+	local task_path="$HOME/src/$1"
+	if [ ! -d $task_path ]; then
+		echo "Creating path $task_path"
+		/bin/mkdir -p $task_path
+		/bin/cp -r ~/src/template/* $task_path/
 	fi
-	cd $path
+	cd $task_path
 }
 
 alias dm='dc main; run_program main'
