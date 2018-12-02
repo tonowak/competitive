@@ -14,7 +14,7 @@ wget -O - https://raw.githubusercontent.com/tonowak/competitive/master/install.s
 
 ### Komenda task
 
-Komenda task przyjmuje jeden argument (nazwa folderu do stworzenia). Wpisanie `task zad` stworzy folder ~/src/zad jeżeli jeszcze nie istnieje, przejdzie do niego oraz skopiuje wszystkie pliki z ~/src/template do tego folderu.
+Komenda task przyjmuje jeden argument (nazwa folderu do stworzenia). Wpisanie `task zad` stworzy folder `~/src/zad` jeżeli jeszcze nie istnieje, przejdzie do niego oraz skopiuje wszystkie pliki z `~/src/template` do tego folderu.
 
 Komenda ma na celu szybkie tworzenie i przechodzenie do nowego folderu do kodzenia zadanka. Gdy zapisanych zadań jest dużo, dobrym pomysłem jest je porozdzielać na foldery (`task oi/zad` stworzy (jak jeszcze nie istnieje) folder zad w folderze ~/src/oi/ (jak folder oi nie istnieje to go też tworzy), a następnie przejdzie do folderu zad). Jeżeli korzystasz z Sublime-Text, kolejnym dobrym pomysłem jest otworzenie folderu ~/src, by mieć pasek z wszystkimi zadaniami i plikami.
 
@@ -28,7 +28,7 @@ Rozkład plików w folderach stworzonych komendą task:
 * tests/gen.gen - wygenerowany test przez skrypt gen.sh
 * tests/main.gen - wygenerowane wyjście wzorcówki na teście tests/gen.gen
 * tests/brute.gen - wygenerowane wyjście bruta na teście tests/gen.gen
-* tests/*.in oraz tests/*.out - testy dla skryptu.sh. Gdy istnieje plik X.in, to musi też istnieć plik X.out. Domyślnie nie ma takich plików w folderze. Można stworzyć dowolną ilość takich plików
+* tests/\*.in oraz tests/\*.out - testy dla skryptu spr.sh. Gdy istnieje plik x.in, to musi też istnieć plik x.out. Domyślnie nie ma takich plików w folderze. Można stworzyć dowolną ilość takich plików.
 
 ### Kompilacja
 
