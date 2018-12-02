@@ -1,7 +1,6 @@
 #!/bin/bash
 
-
-#MEM_LIMIT=""
+MEM_LIMIT="1024m"
 
 if [ $# -lt 1 ]; then
     echo "Usage: $0 <program_to_test> [args...]"
@@ -41,19 +40,27 @@ read STATUS CODE TIME NVM MEM SYSC <"$TMPFILE"
 
 exec >&2
 
-echo ""
-echo "-------------------------"
-echo "Status: $STATUS"
-echo "Program exit code: $CODE"
-echo "Time: ${TIME}ms"
+TIME_A="$(bc <<< "${TIME} / 1000")"
+TIME_B="$(bc <<< "${TIME} % 1000")"
+
+if [ $(bc <<< "${TIME_A}==0 && ${TIME_B}<=200") -eq 0 ]; then
+	printf "${TIME_A}."
+	if (( $TIME_B < 10 )); then printf '0'; fi
+	if (( $TIME_B < 100 )); then printf '0'; fi
+	printf "${TIME_B}s "
+fi
 
 if [ -n "$MEASURE_MEM" ]; then
-    echo "Memory: ${MEM}kB"
+	MEM_KB="$(bc <<< "${MEM} / 1024")"
+	if (( $MEM_KB >= 10)); then
+		printf "${MEM_KB}mB "
+	fi
 fi
 
 if [ "$STATUS" != "OK" ]; then
-    echo "Details:"
-    tail -n+2 "$TMPFILE"
+	printf "$STATUS ("
+	tail -n+2 "$TMPFILE" | tr -d '\n'
+	printf ")"
 fi
 
 rm "$TMPFILE"

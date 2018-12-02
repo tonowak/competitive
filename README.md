@@ -38,6 +38,14 @@ Komenda `dc plik` kompiluje plik tak jak compile, ale z dodatkowymi flagami do d
 
 Komenda `nc plik` kompiluje plik tak jak na OIu (O3 i static).
 
+### spr.sh oraz gen.sh
+
+Skrypt `gen.sh` generuje testy, aż out'y bruta i wzorcówki będą różne. W przypadku WA, wygenerowane wejście (plik tests/config.gen jest inputem generatorki) zostanie zapisane w tests/gen.gen, oraz outy bruta i wzorcówki w tests/brute.gen i tests/main.gen. Automatycznie te pliki zostaną wyświetlone (w przypadku zbyt dużego rozmiaru pliku, wyświetlanie jest pomijane). Wszelkie komunikaty mają fajne kolorki.
+
+Skrypt `spr.sh` kompiluje `main.cpp` i porównuje out'y wzorcówki z testami w postaci tests/x.in i tests/x.out, gdzie x to nazwa testu. Dodatkowo informuje o czasie wykonania wzorcówki (według oitime'a!) i zużytej pamięci (tylko jak przekroczą pewną minimalną wartość). W przypadku WA, skrypt wypisuje test tak jak w gen.sh oraz zapisuje test w plikach tests/gen.gen, tests/brute.gen, tests/main.gen (odpowiednio: input, oczekiwany output, output wzorcówki). W przypadku RE, skrypt wypisuje numer błędu.
+
+By liczenie czasu tak jak na OI'u działało, niezbędne może się okazać wpisanie komendy `sudo sysctl kernel.perf_event_paranoid=-1`
+
 ### Aliasy
 
 Będąc w folderze zadania, istnieje wiele komend skrótowych:
@@ -48,7 +56,7 @@ Będąc w folderze zadania, istnieje wiele komend skrótowych:
 * nm - kompiluje z flagami OI'a i uruchamia plik main.cpp na teście tests/gen.gen
 * nb - kompiluje z flagami OI'a i uruchamia plik brute.cpp na teście tests/gen.gen
 * ng - kompiluje z flagami OI'a plik gen.cpp
-* s - odpala skrypt spr.sh (sprawdzarka wzorcówki na testach tests/*.in)
+* s - odpala skrypt spr.sh (sprawdzarka wzorcówki na testach tests/\*.in)
 * g - odpala skrypt gen.sh (generatorka testów do uwalenia wzorcówki)
 
 Aliasy do edytowania/wyświetlania plików (raczej mało ważne gdy się używa Sublime-Text):

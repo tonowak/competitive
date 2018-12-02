@@ -9,12 +9,30 @@ for ((i=0;i<=10000000;i++)); do
 		print -P "%B[%F{green}OK%F{white}]%b $i"
     else
 		print -P "%B[%F{red}WA%F{white}]%b $i"
-		print -P "%Binput:%b"
-		cat tests/gen.gen
-		print -P "%Bbrute:%b"
-		cat tests/brute.gen
-		print -P "%Bmain:%b"
-		cat tests/main.gen
+
+		print -P "%B- input:%b"
+		if (( $(wc -c < tests/gen.gen) > 150 )); then
+			print "input too big"
+		else
+			cat tests/gen.gen
+		fi
+
+		print -P "%B- expected output:%b"
+		if (( $(wc -c < tests/brute.gen) > 150 )); then
+			print "expected output too big"
+		else
+			cat tests/brute.gen
+		fi
+
+		print -P "%B- got output:%b"
+		if (( $(wc -c < tests/main.gen) > 150 )); then
+			print "output too big"
+		else
+			cat tests/main.gen
+		fi
+
+		print ""
+
         exit 0
     fi
 done     
