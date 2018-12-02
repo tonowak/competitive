@@ -38,13 +38,17 @@ Komenda `dc plik` kompiluje plik tak jak compile, ale z dodatkowymi flagami do d
 
 Komenda `nc plik` kompiluje plik tak jak na OIu (O3 i static).
 
-### spr.sh oraz gen.sh
+### Skrypty spr.sh oraz gen.sh
 
 Skrypt `gen.sh` generuje testy, aż out'y bruta i wzorcówki będą różne. W przypadku WA, wygenerowane wejście (plik tests/config.gen jest inputem generatorki) zostanie zapisane w tests/gen.gen, oraz outy bruta i wzorcówki w tests/brute.gen i tests/main.gen. Automatycznie te pliki zostaną wyświetlone (w przypadku zbyt dużego rozmiaru pliku, wyświetlanie jest pomijane). Wszelkie komunikaty mają fajne kolorki.
 
 Skrypt `spr.sh` kompiluje `main.cpp` i porównuje out'y wzorcówki z testami w postaci tests/x.in i tests/x.out, gdzie x to nazwa testu. Dodatkowo informuje o czasie wykonania wzorcówki (według oitime'a!) i zużytej pamięci (tylko jak przekroczą pewną minimalną wartość). W przypadku WA, skrypt wypisuje test tak jak w gen.sh oraz zapisuje test w plikach tests/gen.gen, tests/brute.gen, tests/main.gen (odpowiednio: input, oczekiwany output, output wzorcówki). W przypadku RE, skrypt wypisuje numer błędu.
 
 By liczenie czasu tak jak na OI'u działało, niezbędne może się okazać wpisanie komendy `sudo sysctl kernel.perf_event_paranoid=-1`
+
+### Komenda add\_test
+
+Będąc w folderze jakiegoś taska, komenda add\_test stworzy kolejny test (w sensie, jak w tests/ są pliki 1.in oraz 2.in, stworzy 3.in). Poprosi najpierw o wpisanie zawartości pliku .in, potem pliku .out. Przestaje wczytywać zawartość pliku, gdy spotka pustą linię.
 
 ### Aliasy
 
@@ -72,10 +76,12 @@ Aliasy do edytowania/wyświetlania plików (raczej mało ważne gdy się używa 
 * cm - wyświetla plik main.cpp (oraz istnieją analogicznie cb, cg, ctg, ctc, ctm, ctb)
 
 Oraz poprzednie komendy:
+
 * task
 * compile
-* dc (i dodatkowy dc_gdb)
+* dc (i dodatkowy dc\_gdb)
 * nc
+* add\_test
 
 ## Nagłówki i inne OI-owe kody
 
