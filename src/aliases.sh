@@ -37,13 +37,13 @@ function run_program() {
 }
 
 function task() {
-	local path="$HOME/src/$1"
-	if [ ! -d $path ]; then
-		echo "Creating path $path"
-		/bin/mkdir -p $path
-		/bin/cp -r ~/src/template/* $path/
+	local task_path="$HOME/src/$1"
+	if [ ! -d $task_path ]; then
+		echo "Creating path $task_path"
+		/bin/mkdir -p $task_path
+		/bin/cp -r ~/src/template/* $task_path/
 	fi
-	cd $path
+	cd $task_path
 }
 
 alias dm='dc main; run_program main'
@@ -53,6 +53,9 @@ alias dg='dc gen'
 alias nm='nc main; run_program main'
 alias nb='nc brute; run_program brute'
 alias ng='nc gen'
+
+alias s='./spr.sh'
+alias g='./gen.sh'
 
 alias v='nvim' # or nvim or subl (sublime text)
 alias vi='v'
@@ -71,7 +74,4 @@ alias ctc='cat tests/config.gen'
 alias ctb='cat tests/brute.gen'
 alias ctm='cat tests/main.gen'
 alias ctg='cat tests/gen.gen'
-
-alias s='./spr.sh'
-alias g='./gen.sh'
 
