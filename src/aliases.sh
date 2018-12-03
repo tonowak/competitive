@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+setxkbmap -option caps:swapescape # swapping caps with esc
+
 function compile() {
 	rm .failed -f
 	file=${${1}%.cpp}
