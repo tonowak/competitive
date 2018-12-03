@@ -13,5 +13,6 @@ let g:one_allow_italics = 1
 
 autocmd BufNewFile,BufRead * syntax keyword Repeat FOR REP FORD REPD
 autocmd BufNewFile,BufRead * syntax keyword Type L VL VVL VI VVI II VII VVII VB VVB LD
-autocmd BufNewFile,BufRead * syntax keyword Constant D I nl inf inf_l
+autocmd BufNewFile,BufRead * syntax keyword Type vector tuple pair array deque set multiset unordered_set map unordered_map priority_queue
+autocmd BufNewFile,BufRead * syntax keyword Constant D I nl inf inf_l cerr
 
