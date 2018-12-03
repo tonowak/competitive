@@ -83,7 +83,7 @@ alias nm='nc main; run_program main'
 alias nb='nc brute; run_program brute'
 alias ng='nc gen'
 
-alias v='nvim' # or nvim or subl (sublime text)
+alias v='vim' # or nvim or subl (sublime text)
 alias vi='v'
 alias vg='v gen.cpp'
 alias vm='v main.cpp'
