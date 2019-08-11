@@ -1,37 +1,39 @@
 #!/bin/zsh
 
+function myprint() {
+	print -P "$@%{$reset_color%}"
+}
+
 for ((i=0;i<=10000000;i++)); do
     ./gen < tests/config.gen > tests/gen.gen
     ./main < tests/gen.gen   > tests/main.gen
     ./brute < tests/gen.gen  > tests/brute.gen
 
     if diff -w tests/main.gen tests/brute.gen > /dev/null; then
-		print -P "%B[%F{green}OK%F{white}]%b $i"
+		print -Pn "%B[%F{green}OK%F{white}]%b $i\r"
     else
-		print -P "%B[%F{red}WA%F{white}]%b $i"
+		myprint "%B[%F{red}WA%F{white}]%b $i"
 
-		print -P "%B- input:%b"
+		myprint "%B- input:%b"
 		if (( $(wc -c < tests/gen.gen) > 150 )); then
-			print "input too big"
+			myprint "input too big"
 		else
 			cat tests/gen.gen
 		fi
 
-		print -P "%B- expected output:%b"
+		myprint "%B- expected output:%b"
 		if (( $(wc -c < tests/brute.gen) > 150 )); then
-			print "expected output too big"
+			myprint "expected output too big"
 		else
 			cat tests/brute.gen
 		fi
 
-		print -P "%B- got output:%b"
+		myprint "%B- got output:%b"
 		if (( $(wc -c < tests/main.gen) > 150 )); then
-			print "output too big"
+			myprint "output too big"
 		else
 			cat tests/main.gen
 		fi
-
-		print ""
 
         exit 0
     fi
