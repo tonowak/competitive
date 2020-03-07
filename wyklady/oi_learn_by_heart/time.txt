@@ -1,0 +1,2 @@
+#  komenda:
+oiejq ./main < t.in > m.out
